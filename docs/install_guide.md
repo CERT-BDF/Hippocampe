@@ -2,7 +2,7 @@
 
 ## 1.1 Intro
 You will find bellow the installation instructions.
-Don't want to install it ? You can use the docker version instead, check [this](#docker).
+Don't want to install it ? You can use the docker version instead, check [this](#3-docker).
 Check also the [tutorial](tutorial.md) for more details.
 
 ## 1.2 Requirements
@@ -25,7 +25,7 @@ pip install elasticsearch Configparser netaddr flask python-dateutil apscheduler
 
 # 2. Quick Build Guide
 ## 2.1 Ubuntu 16.04
-### 2.2.1. Packages
+### 2.2.1 Packages
 
 ```
 sudo apt-get install git wget python-pip pyhon git 
@@ -49,7 +49,7 @@ sudo apt-get update && sudo apt-get install -y elasticsearch
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
 ```
-### 2.2.3.1 ElasticSearch Configuration
+#### 2.2.3.1 ElasticSearch Configuration
 
 The default Elasticsearch 5.1's configuration is enough to make Hippocampe works.
 
@@ -74,19 +74,19 @@ sudo npm install -g bower
 git clone https://github.com/CERT-BDF/Hippocampe.git
 ```
 
-### 2.2.6.2 Install python libraries 
+#### 2.2.6.2 Install python libraries 
 ```
 pip install elasticsearch Configparser netaddr flask python-dateutil apscheduler requests
 ```
 
-### 2.2.6.2 Installation
+#### 2.2.6.2 Installation
 * Clone or download the project
 * Install the web dependencies with bower (https://bower.io/)
 ```
 cd Hippocampe/core/static
 bower install
 ```
-### 2.2.6.3 Start elasticsearch
+#### 2.2.6.3 Start elasticsearch
 ```
 service elasticsearch start
 ```
@@ -98,7 +98,7 @@ python Hippocampe/core/app.py
 ```
 By default, Hippocampe is listening on port 5000.
 
-## 3. docker
+# 3. docker
 If you just want to give it a try, you may want to use Hippocampe inside a docker:
 
 ```
@@ -109,7 +109,7 @@ docker run -p 5000:5000 hippocampe
 
 Now Hippocampe is available on port 5000 and runs inside a docker.
 
-## 4. Hippocampe as a service
+# 4. Hippocampe as a service
 
 To turn Hippocampe into a service, the uWSGI tool and a NGINX server will be used.
 
@@ -117,20 +117,20 @@ NGINX will host all the web content while uWSGI will execute the python code.
 
 In this example, Hippocampe is located at ```/opt/Hippocampe``` and configuration files for both nginx and uWSGI are located at ```/var/www/demoapp```.
 
-### 4.1 Install NGINX
+## 4.1 Install NGINX
 
 ```
 sudo apt-get install nginx
 ```
 
-### 4.2 Install uWSGI
+## 4.2 Install uWSGI
 
 ```
 sudo apt-get install build-essential python python-dev
 sudo pip install uwsgi
 ```
 
-### 4.3 Configuring nginx
+## 4.3 Configuring nginx
 
 * Delete the default nginx's site
 
@@ -166,7 +166,7 @@ sudo ln -s /var/www/demoapp/hippo_nginx.conf /etc/nginx/conf.d/
 sudo /etc/init.d/nginx restart
 ```
 
-### 4.4 Configuring uWSGI
+## 4.4 Configuring uWSGI
 
 * Create the configuration file at ```/var/www/demoapp/demoapp_uwsgi.ini```
 
