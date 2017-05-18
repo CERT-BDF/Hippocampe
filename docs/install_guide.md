@@ -90,7 +90,7 @@ bower install
 ```
 service elasticsearch start
 ```
- run app.py script   
+ ### 2.2.7 run app.py script   
 ```
 cd ../../../
 mkdir Hippocampe/core/logs
