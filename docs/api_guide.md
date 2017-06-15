@@ -1,6 +1,6 @@
-#User Guide
+# User Guide
 
-##Intro
+## Intro
 
 The following guide will describe how to use *Hippocampe*'s services.
 Below the services' list:
@@ -24,9 +24,9 @@ Below the services' list:
 
  ***
 
-##distinct
+## distinct
 *distinct* service takes an intelligence type as parameter, it returns all distinct values that match the type given.
-###Example
+### Example
 
 + all distinct ip known by *Hippocampe*: 
 **Querry** :
@@ -71,7 +71,7 @@ curl -i -H "Content-Type: application/json" -X POST -d '
 
 ***
 
-##freshness
+## freshness
 *freshness* service checks if your feeds are "up to date".
 In ```Hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by default it is setted to 1 day:
 ```
@@ -80,7 +80,7 @@ In ```Hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by de
 threshold : 1
 ```
 If the feed has not been querried within the last day, the service returns "NOK", otherwise it returns "OK".
-###Example
+### Example
 **Querry**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/freshness
@@ -102,11 +102,11 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/freshness
 
 ***
 
-##hipposched
+## hipposched
 *Hippocampe* retrieves threat intelligence from internet's feed to index it. This is done through [shadowbook](#shadowbook) service.
 *hipposched* allows to schedule automaticaly the launch of  [shadowbook](#shadowbook), in other words automatic indexation is possible.
 The crontab syntax is used to indicate the job's frequency.
-###Example
+### Example
 + Indexation every 12 hours
 **Query**:
 ```
@@ -133,14 +133,14 @@ Please be aware that:
 
 ***
 
-##hipposcore
+## hipposcore
 *hipposcore* service takes one or several observables as parameters and returns a score for each. 
 The score is ranged between 0 and -100:
 
 + 0 : observable unknown
 + -100: super evil observable
 
-###Example
+### Example
 **Query**:
 ```
 curl -i -H "Content-Type: application/json" -X POST -d '
@@ -167,12 +167,12 @@ For more details on the *hipposcore* formula, check [this](hipposcore.md).
 
 ***
 
-##jobs
+## jobs
 *Hippocampe* retrieves threat intelligence from internet's feed to index it. This is done through [shadowbook](#shadowbook) service. 
 At the end of the process, a "report" is generated to sum it up. 
 *jobs* service allows to return every report generated.
 
-###Example
+### Example
 **Querry**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/jobs
@@ -231,10 +231,10 @@ When an element is already known, its *lastAppearance* date is updated.
 
 ***
 
-##lastquery
+## lastquery
 *lastQuery* returns the last query date for every sources. samedi, 07. mai 2016 03:50 
 he date format is ```"%Y%m%dT%H%M%S%z"```
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/lastQuery
@@ -251,9 +251,9 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/lastQuery
 }
 ```
 
-##laststatus
+## laststatus
 *lastStatus* service checks if the last indexation went well. It checks the last job report, returns ```OK``` if there's no error and if ```(nbIndexed =! 0 and nbUpdated != 0)```, if not it returns ```NOK```.
-###Example
+### Example
 **Querry**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/lastStatus
@@ -269,7 +269,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/lastStatus
 ```
 
 ***
-##monitorsources
+## monitorsources
 *monitorSources* service "concatenates" 4 services:
 
 + [*freshness*](#freshness)
@@ -277,7 +277,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/lastStatus
 + [*schedReport*](#schedreport)
 + [*sizeBySource*](#sizebysource)
 
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/monitorSources
@@ -308,9 +308,9 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/monitorSources
 
 ***
 
-##more
+## more
 *more* service returns intelligence about an element given in parameters.
-###Example
+### Example
 **Querry**:
 ```
 curl -i -H "Content-Type: application/json" -X POST -d '
@@ -356,11 +356,11 @@ When the list is empty, it means that the observable is unknown.
 
 ***
 
-##new
+## new
 *Hippocampe* retrieves threat intelligence from internet's feed to index it.
 New intelligences, neve seen before, are also indexed under the index/type hippocampe/new.
 *new* service returns all elements under this index/type to search them in your information system.
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/new
@@ -381,7 +381,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/new
 
 ***
 
-##schedreport
+## schedreport
 With [*hipposched*](#hipposched) service, indexation can be scheduled.
 If the indexation is scheduled every 12 hours, *schedReport* checks if an indexation has been launched in the last 12 hours. If so, it returns ```OK```, if not it returns ```NOK``` for every sources.
 The threshold is defined in ```Hippocampe/core/conf/hippo/hippo.conf```:
@@ -390,7 +390,7 @@ The threshold is defined in ```Hippocampe/core/conf/hippo/hippo.conf```:
 #in hours 
 threshold: 12
 ```
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/schedReport
@@ -407,12 +407,12 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/schedReport
 
 ***
 
-##shadowbook
+## shadowbook
 When launched, *shadowbook* service retrieves feeds from internet to index them. 
 Feeds to be requested are indicated under ```Hippocampe/core/conf/feeds```. 
 Check [this](how_to_add_feed.md) for more details on how to add feed.
 
-###Example
+### Example
 **Querry**:
 ```
 curl -XGET localhost:5000/hippocampe/api/v1.0/shadowbook
@@ -436,10 +436,10 @@ Please note that there is only one *ongoing* job at a time. If the service is re
 
 ***
 
-##sizebysource
+## sizebysource
 *sizeBySource* service returns  the size's source (number of element) for every sources.
 
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/sizeBySources
@@ -459,11 +459,11 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/sizeBySources
 
 ***
 
-##sizebytype
+## sizebytype
 
 *sizeByType* service returns  the number of element for each observable's type.
 
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/sizeByType
@@ -487,10 +487,10 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/sizeByType
 
 ***
 
-##sources
+## sources
 *sources* service returns every feed's sources known and theirassociated metadata.
 
-###Example
+### Example
 **Query**:
 ```
 curl -GET http://localhost:5000/hippocampe/api/v1.0/sources
@@ -543,10 +543,10 @@ The values associated to the key are the matadata:
 
 ***
  
-##type
+## type
 *type* service returns every observable's type available in *Hippocampe*.
 
-###Example
+### Example
 **Querry**:
 ```
 curl -XGET localhost:5000/hippocampe/api/v1.0/type
