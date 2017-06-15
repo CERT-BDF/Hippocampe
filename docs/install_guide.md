@@ -1,11 +1,11 @@
-#Install Guide
+# Install Guide
 
-##Intro
+## Intro
 You will find bellow the installation instructions.
 Don't want to install it ? You can use the docker version instead, check [this](#docker).
 Check also the [tutorial](tutorial.md) for more details.
 
-##Requirements
+## Requirements
 
 Hippocampe needs some external tools to work, you will find below the list of requirements:
 
@@ -23,11 +23,11 @@ Hippocampe needs some external tools to work, you will find below the list of re
 pip install elasticsearch Configparser netaddr flask python-dateutil apscheduler requests
 ```
 
-##Configuration
+## Configuration
 
 The default Elasticsearch 5.1's configuration is enough to make Hippocampe works.
 
-##Installation
+## Installation
 * Clone or download the project
 * Install the web dependencies with bower (https://bower.io/)
 ```
@@ -44,7 +44,7 @@ python Hippocampe/core/app.py
 ```
 By default, Hippocampe is listening on port 5000.
 
-##docker
+## docker
 If you just want to give it a try, you may want to use Hippocampe inside a docker:
 
 ```
@@ -55,7 +55,7 @@ docker run -p 5000:5000 hippocampe
 
 Now Hippocampe is available on port 5000 and runs inside a docker.
 
-##Hippocampe as a service
+## Hippocampe as a service
 
 To turn Hippocampe into a service, the uWSGI tool and a NGINX server will be used.
 
@@ -63,20 +63,20 @@ NGINX will host all the web content while uWSGI will execute the python code.
 
 In this example, Hippocampe is located at ```/opt/Hippocampe``` and configuration files for both nginx and uWSGI are located at ```/var/www/demoapp```.
 
-###Install NGINX
+### Install NGINX
 
 ```
 sudo apt-get install nginx
 ```
 
-###Install uWSGI
+### Install uWSGI
 
 ```
 sudo apt-get install build-essential python python-dev
 sudo pip install uwsgi
 ```
 
-###Configuring nginx
+### Configuring nginx
 
 * Delete the default nginx's site
 
@@ -112,7 +112,7 @@ sudo ln -s /var/www/demoapp/hippo_nginx.conf /etc/nginx/conf.d/
 sudo /etc/init.d/nginx restart
 ```
 
-###Configuring uWSGI
+### Configuring uWSGI
 
 * Create the configuration file at ```/var/www/demoapp/demoapp_uwsgi.ini```
 
@@ -159,7 +159,7 @@ sudo chown -R www-data:www-data /var/www/demoapp/
 sudo chown -R www-data:www-data /opt/Hippocampe
 ```
 
-###Turn all stuff into a service with ```systemctl```
+### Turn all stuff into a service with ```systemctl```
 
 * Create the file ```/etc/systemd/system/uwsgi.service```
 
@@ -199,13 +199,13 @@ sudo systemctl daemon-reload
 sudo systemctl start uwsgi
 ```
 
-###Test it
+### Test it
 
 Go to ```http://localhost/hippocampe``` and it should work.
 
 Moreover the API is now expose to port 80.
 
-###Logs path
+### Logs path
 
 * Hippocampe's logs
    * ```Hippocampe/core/logs/hippocampe.log```
