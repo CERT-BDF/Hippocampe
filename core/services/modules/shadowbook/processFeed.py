@@ -60,6 +60,8 @@ def main(listSessions, cfgPath):
 					#the function will return a csvDictReader which we convert to dict afterward
 					parsedPage = csvParser(feedPage, cfgPath)
 					parsedPage = list(extendTools.unique_justseen(list(parsedPage), key = operator.itemgetter(source.coreIntelligence)))
+					if source.coreIntelligence == 'ip':
+						parsedPage = extendTools.transform_cidr(parsedPage, key = source.coreIntelligence)
 					#parsedPage will look like:
 					#[{'domain': 'stie.pbsoedirman.com', 'original_reference-why_it_was_listed': 'spamhaus.org', u'extra': ['20160324'], 'nextvalidation': '', 'blank': '', 'type': 'malware'}, {'domain': 'thecommercialalliance.com', 'original_reference-why_it_was_listed': 'spamhaus.org', u'extra': ['20160324'], 'nextvalidation': '', 'blank': '', 'type': 'botnet'}]
 					
