@@ -42,6 +42,10 @@ def calcHipposcore(dictResult):
 				for match in listMatches:
 					#n1 retrieving the source according to its id
 					idSource = match['idSource']
+					if idSource = None:
+						logger.critical('hipposcore.calcHipposcore.idSource is type None')
+						logger.info(match)
+						continue
 					n1 = cache.get(idSource)
 					if n1 is None:
 						source = ExistingSource(idSource)
