@@ -5,6 +5,7 @@
 from modules.more.ObjToEnrich import ObjToEnrich
 from multiprocessing.dummy import Pool as ThreadPool
 from multiprocessing import cpu_count, Queue
+from ES import getES
 from hipposcore import calcHipposcore 
 nbProcessPerCPU = 1 
 import logging
@@ -63,8 +64,25 @@ def main(jsonRequest):
 
 	#yet, the response does not include hipposcore
 	#let's add the hipposcore to the response
-	
-	hipposcoreDict = calcHipposcore(response)
+	#let's fix their broken bullshit too!
+	logger.info("initiating fix")
+
+	try:
+		new_response = {}
+		for ip, data in response.iteritems():
+			temp_list = []
+			for item in data:
+				if item["idSource"] == '':
+					item["idSource"] = fixThisBrokenBullshit(item["source"])
+				temp_list.append(item)
+			new_response[ip] = temp_list
+	except Exception as e:
+		logger.error('failed to fix their broken shit', exc_info = True)
+		logger.error(response)
+		report = dict()
+		report['error'] = str(e)
+
+	hipposcoreDict = calcHipposcore(new_response)
 
 	#two dicts, response with all data
 	#{u'103.16.26.228': [{u'date': u'20151001T112643+0200',
@@ -97,6 +115,29 @@ def main(jsonRequest):
 					match['hipposcore'] = scoreDict
 	logger.info('more.main end')
 	return response
+
+def fixThisBrokenBullshit(source):
+	es = getES()
+
+	data = {
+		'query' : {
+			'bool' : {
+				'must' : [
+					{'match' : {'source' : source}}
+					]
+				}
+			}
+		}
+
+	res = es.search(body=data)
+
+	for i in res['hits']['hits']:
+		if i[_"source"]["idSource"] != "":
+			return i[_"source"]["idSource"]
+			break
+		else:
+			continue
+
 
 if __name__ == '__main__':
 	main()

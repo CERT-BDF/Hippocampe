@@ -73,7 +73,6 @@ def calcHipposcore(dictResult):
 						#ioc's age in days
 						age = (nowDate - lastAppearanceDate).days
 						n3 = exp(-age / T)
-						#P is the sum of n3 * n2 * n1 for every matches
 						P = P + (n3 * n2 * n1)
 					except Exception as e:
 						logger.error('hipposcore.calcHipposcore.match failed to process', exc_info = True)
