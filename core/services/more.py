@@ -65,7 +65,7 @@ def main(jsonRequest):
 	#yet, the response does not include hipposcore
 	#let's add the hipposcore to the response
 	#let's fix their broken bullshit too!
-	logger.info("initiating fix")
+	logger.warning("initiating fix")
 
 	try:
 		new_response = {}
@@ -132,8 +132,8 @@ def fixThisBrokenBullshit(source):
 	res = es.search(body=data)
 
 	for i in res['hits']['hits']:
-		if i[_"source"]["idSource"] != "":
-			return i[_"source"]["idSource"]
+		if i["_source"]["idSource"] != "":
+			return i["_source"]["idSource"]
 			break
 		else:
 			continue
