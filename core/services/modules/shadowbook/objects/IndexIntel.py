@@ -95,8 +95,7 @@ class IndexIntel(Index):
 						"format": "basic_date_time_no_millis"
 					},
 					"source": {
-						"type": "keyword",
-						"index": "not_analyzed"
+						"type": "keyword"
 					}
 				}
 			}
