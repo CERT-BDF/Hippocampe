@@ -17,20 +17,20 @@ RUN npm install -g bower
 RUN pip install --upgrade pip && \
     pip install apscheduler \
 	Configparser \
-	elasticsearch \
+	elasticsearch==5.5.3 \
 	flask \
 	python-dateutil \
 	requests \
 	urllib3==1.23
 
-COPY ./core /opt/Hippocampe/core
+COPY ./core /opt/hippocampe/core
 COPY docker-entrypoint.sh /
 
 RUN adduser hippo -D
-RUN chown -R hippo:hippo /opt/Hippocampe /docker-entrypoint.sh
+RUN chown -R hippo:hippo /opt/hippocampe /docker-entrypoint.sh
 
 USER hippo
 
-RUN cd /opt/Hippocampe/core/static && bower install
+RUN cd /opt/hippocampe/core/static && bower install
 
 ENTRYPOINT /docker-entrypoint.sh
