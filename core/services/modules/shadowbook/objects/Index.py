@@ -37,20 +37,20 @@ class Index(object):
 		#create indexES instance
 		indexES = client.IndicesClient(self.es)
 		if(self.es.indices.exists(index = self.indexNameES)):
-			#logger.info('index %s already exists', self.indexNameES)
+			logger.info('index %s already exists', self.indexNameES)
 			#index already exists but it does not mean that the type exists
 			if(self.es.indices.exists_type(index = self.indexNameES, doc_type = [self.typeNameES])):
-				#logger.info('type %s already exists', self.typeNameES)
+				logger.info('type %s already exists', self.typeNameES)
 				#type already exists nothing to do
 				pass
 			else:
 				#type does not exists, creating it with the mapping to apply
-				#logger.info('type %s does no exist, creating it', self.typeNameES)
-				indexES.put_mapping(doc_type = self.typeNameES, body = self.docMapping)
+				logger.info('type %s does not exist, creating it', self.typeNameES)
+				indexES.put_mapping(doc_type = self.typeNameES, body = self.docMapping, index = self.indexNameES)
 		else:
 			#index does not exists, neither type (type can't exist without index)
 			#creating both
-			#logger.info('index %s and type %s do not exist, creating them', self.indexNameES, self.typeNameES)
+			logger.info('index %s and type %s do not exist, creating them', self.indexNameES, self.typeNameES)
 			indexES.create(index = self.indexNameES)
 			#indicate mapping which applies only on index/type
-			indexES.put_mapping(doc_type = self.typeNameES, body = self.docMapping)
+			indexES.put_mapping(doc_type = self.typeNameES, body = self.docMapping, index = self.indexNameES)

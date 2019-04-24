@@ -61,7 +61,7 @@ class Job(ObjToIndex):
 		self.docUpdate = {
 		    "script": {
 				"lang": "painless",
-				"inline": "ctx._source.status = params.status; ctx._source.endTime = params.endTime; ctx._source.duration = params.duration; ctx._source.report = params.report",
+				"source": "ctx._source.status = params.status; ctx._source.endTime = params.endTime; ctx._source.duration = params.duration; ctx._source.report = params.report",
 		    	"params": {
 		        	"status": self.status,
 		        	"endTime": self.endTime,

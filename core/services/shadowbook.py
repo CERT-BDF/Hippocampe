@@ -47,10 +47,12 @@ def startJob():
 		#arguments must be in a list
 		argInputs = list()
 		feedsPath = os.path.dirname(os.path.abspath(__file__)) + '/../conf/feeds'
+		logger.info(feedsPath)
 		
 		#building the list which each element is a feedConfPath
 		for cfgFile in listdir(feedsPath):
 			cfgPath = join(feedsPath, cfgFile)
+			logger.info(cfgPath)
 			argInputs.append(cfgPath)
 		
 		for link in argInputs:

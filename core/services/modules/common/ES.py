@@ -18,7 +18,8 @@ def getES():
         cfg.read(confPath)
         host = cfg.get('elasticsearch', 'ip')
         port = cfg.getint('elasticsearch', 'port')
-        ES = Elasticsearch([{'host': host, 'port' : port}], timeout = 60)
+		#estimeout = cfg.getint('elasticsearch', 'timeout')
+        ES = Elasticsearch([{'host': host, 'port' : port}], timeout = 120)
 	return ES
 
 def checkES():

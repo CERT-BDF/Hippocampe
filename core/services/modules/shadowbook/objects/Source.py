@@ -33,10 +33,10 @@ class Source(ObjToIndex):
 			:type config: Config object instance.
 		"""
 		self.cfgPath = cfgPath
-		#conf from Hippocampe/core/conf/feeds
+		#conf from hippocampe/core/conf/feeds
 		conf = getConf.getConf(cfgPath)
 
-		#conf from Hippocampe/core/conf/hippo
+		#conf from hippocampe/core/conf/hippo
 		cfg = getConf.getHippoConf()
 
 		super(Source, self).__init__()
@@ -99,7 +99,7 @@ class Source(ObjToIndex):
 		self.docUpdate = {
 		    "script": {
 				"lang": "painless",
-				"inline": "ctx._source.lastQuery = params.lastQuery",
+				"source": "ctx._source.lastQuery = params.lastQuery",
 		    	"params": {
 		        	"lastQuery": self.lastQuery
 		    	}
@@ -110,7 +110,7 @@ class Source(ObjToIndex):
 		self.docUpdate = {
 			"script": {
 				"lang": "painless",
-				"inline": "ctx._source.score = params.score",
+				"source": "ctx._source.score = params.score",
 				"params": {
 					"score": self.score
 				}

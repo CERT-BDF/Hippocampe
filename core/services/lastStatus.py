@@ -13,7 +13,7 @@ def main():
 		bag = BagOfJobs()
 		globalReport = bag.getLastJob()
 		for confFileName, report in globalReport['report'].items():
-			result[report['link']] = dict()
+			if 'link' in report: result[report['link']] = dict()
 			if report['error']:
 				#there's one or more errors
 				result[report['link']]['lastStatus'] = 'NOK'
