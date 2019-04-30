@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /opt/Hippocampe/core
+cd /opt/hippocampe/core
 python app.py
