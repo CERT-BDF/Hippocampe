@@ -50,12 +50,10 @@ class IndexNew(Index):
                         self.typeNameES : {
                                 "properties" : {
 					"toSearch": {
-						"type": "keyword",
-						"index": "not_analyzed"
+						"type": "keyword"
 						},
 					"type": {
-						"type": "keyword",
-						"index": "not_analyzed"
+						"type": "keyword"
 						}
 				}
 			}

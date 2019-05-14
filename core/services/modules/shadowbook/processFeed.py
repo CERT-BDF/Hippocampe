@@ -65,6 +65,7 @@ def main(listSessions, cfgPath):
 					
 					#searching all intels at once with msearch
 					resMsearch = searchIntel.littleMsearch(source.coreIntelligence, source.typeNameESIntel, parsedPage)
+					#logger.debug('resMsearch = %s', resMsearch)
 					#sorting intels which will be updated and indexed
 					sortedDict = processMsearch.littleSort(resMsearch, parsedPage)
 					

@@ -66,13 +66,13 @@ class IndexIntel(Index):
 		listMapping = self.conf.items('intel')
 		self.confMapping = listToDict(listMapping)
 		#at the end, self.confMapping looks like this:
-		#{u'domain': u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}',
-		# u'extra': u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}',
-		# u'nextvalidation': u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}',
-		# u'original_reference-why_it_was_listed': u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}',
-		# u'type': u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}'}
+		#{u'domain': u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}',
+		# u'extra': u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}',
+		# u'nextvalidation': u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}',
+		# u'original_reference-why_it_was_listed': u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}',
+		# u'type': u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}'}
 		#However, please note that the key AND the value is unicode
-		#so u'{\n"mapping" : {\n"type": "string",\n"index": "not_analyzed"\n}\n}'} is a unicode
+		#so u'{\n"mapping" : {\n"type": "text",\n"index": "false"\n}\n}'} is a unicode
 		#formated as a string
 
 	def forgeDocMapping(self):
@@ -95,8 +95,7 @@ class IndexIntel(Index):
 						"format": "basic_date_time_no_millis"
 					},
 					"source": {
-						"type": "keyword",
-						"index": "not_analyzed"
+						"type": "keyword"
 					}
 				}
 			}

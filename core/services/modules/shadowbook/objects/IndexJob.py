@@ -44,12 +44,10 @@ class IndexJob(Index):
 #				"dynamic": "strict",
 				"properties" : {
 #					"report": {
-#						"type": "date",
-#						"index": "not_analyzed"
+#						"type": "date"
 #					},
 					"status": {
-						"type": "keyword",
-						"index": "not_analyzed"
+						"type": "keyword"
 					},
 					"startTime": {
 						"type": "date",

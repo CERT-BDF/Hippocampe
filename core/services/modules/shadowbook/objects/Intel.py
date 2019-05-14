@@ -85,7 +85,7 @@ class Intel(ObjToIndex):
 		self.docUpdate = {
 			"script": {
 				"lang": "painless",
-				"inline": "ctx._source.lastAppearance = params.lastAppearance",
+				"source": "ctx._source.lastAppearance = params.lastAppearance",
 				"params": {
 					"lastAppearance": self.lastAppearance
 				}

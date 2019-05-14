@@ -43,16 +43,13 @@ class IndexSource(Index):
 		        self.typeNameES: {
 		            "properties": {
 						"lastStatus": {
-							"type": "keyword",
-							"index": "not_analyzed"
+							"type": "keyword"
 						},
 		                "link": {
-		                    "type": "keyword",
-		                    "index": "not_analyzed"
+		                    "type": "keyword"
 		                },
 		                "type": {
-		                    "type": "keyword",
-		                    "index": "not_analyzed"
+		                    "type": "keyword"
 		                },
 		                "firstQuery": {
 		                    "type": "date",

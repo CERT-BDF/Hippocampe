@@ -31,7 +31,7 @@ The default Elasticsearch 5.1's configuration is enough to make Hippocampe works
 * Clone or download the project
 * Install the web dependencies with bower (https://bower.io/)
 ```
-cd Hippocampe/core/static
+cd hippocampe/core/static
 bower install
 ```
 * Start elasticsearch
@@ -40,7 +40,7 @@ service elasticsearch start
 ```
 * run app.py script   
 ```
-python Hippocampe/core/app.py
+python hippocampe/core/app.py
 ```
 By default, Hippocampe is listening on port 5000.
 
@@ -48,7 +48,7 @@ By default, Hippocampe is listening on port 5000.
 If you just want to give it a try, you may want to use Hippocampe inside of Docker:
 
 ```
-cd Hippocampe/
+cd hippocampe/
 docker build -t hippocampe .
 docker run -p 5000:5000 hippocampe
 ```
@@ -64,7 +64,7 @@ ip : hipposearch
 port : 9200
 ```
 ```
-cd Hippocampe/
+cd hippocampe/
 docker-compose up
 ```
 
@@ -75,7 +75,7 @@ To turn Hippocampe into a service, the uWSGI tool and a NGINX server will be use
 
 NGINX will host all the web content while uWSGI will execute the python code.
 
-In this example, Hippocampe is located at ```/opt/Hippocampe``` and configuration files for both nginx and uWSGI are located at ```/var/www/demoapp```.
+In this example, Hippocampe is located at ```/opt/hippocampe``` and configuration files for both nginx and uWSGI are located at ```/var/www/demoapp```.
 
 ### Install NGINX
 
@@ -133,7 +133,7 @@ sudo /etc/init.d/nginx restart
 ```
 [uwsgi]
 #application's base folder
-chdir = /opt/Hippocampe/core
+chdir = /opt/hippocampe/core
 
 #python module to import
 app = app
@@ -170,7 +170,7 @@ sudo mkdir -p /var/www/demoapp/log/uwsgi
 
 ```
 sudo chown -R www-data:www-data /var/www/demoapp/
-sudo chown -R www-data:www-data /opt/Hippocampe
+sudo chown -R www-data:www-data /opt/hippocampe
 ```
 
 ### Turn all stuff into a service with ```systemctl```
@@ -222,7 +222,7 @@ Moreover the API is now expose to port 80.
 ### Logs path
 
 * Hippocampe's logs
-   * ```Hippocampe/core/logs/hippocampe.log```
+   * ```hippocampe/core/logs/hippocampe.log```
 * nginx's logs
    * ```/var/log/nginx/access.log```
    * ```/var/log/nginx/error.log```

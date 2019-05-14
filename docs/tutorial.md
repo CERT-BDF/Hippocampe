@@ -207,7 +207,7 @@ The first time this ip appeared in ```feodotracker.abuse.ch``` was on ```2016050
 
 ### How to add a new source ?
 
-Each source has its configuration file. To add a source, a configuration file needs to be added in ```Hippocampe/core/conf/feeds```.
+Each source has its configuration file. To add a source, a configuration file needs to be added in ```hippocampe/core/conf/feeds```.
 
 Below an example of configuration file:
 
@@ -231,40 +231,40 @@ typeIntel = malwaredomainsFree_dnsbhDOMAIN
 [intel]
 nextvalidation = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 domain = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 type = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 original_reference-why_it_was_listed = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 extra = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 ```
@@ -316,40 +316,40 @@ The value associated will be the elasticsearch mapping:
 [intel]
 nextvalidation = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 domain = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 type = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 original_reference-why_it_was_listed = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 
 
 extra = {
 	"mapping" : {
-		"type": "string",
-		"index": "not_analyzed"
+		"type": "text",
+		"index": "false"
 		}
 	}
 ```
@@ -417,7 +417,7 @@ The values associated to the key are the matadata:
 
 ### logs
 
-Hippocampe logs are located at ```Hippocampe/core/logs/hippocampe.log```.
+Hippocampe logs are located at ```hippocampe/core/logs/hippocampe.log```.
 
 ***
 
@@ -586,7 +586,7 @@ We previously introduced how to [monitor the sources](#monitor-the-sources). Eac
 
 #### freshness
 *freshness* service checks if your feeds are "up to date".
-In ```Hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by default it is setted to 1 day:
+In ```hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by default it is setted to 1 day:
 ```
 [freshness]
 #in days
@@ -636,7 +636,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/lastQuery
 #### schedReport
 By [retrieveing feeds automatically and periodically](#retrieve-feeds-automatically-and-periodically), indexation can be scheduled.
 If the indexation is scheduled every 12 hours, *schedReport* checks if an indexation has been launched in the last 12 hours. If so, it returns ```OK```, if not it returns ```NOK``` for every sources.
-The threshold is defined in ```Hippocampe/core/conf/hippo/hippo.conf```:
+The threshold is defined in ```hippocampe/core/conf/hippo/hippo.conf```:
 ```
 [schedReport]
 #in hours 
@@ -707,10 +707,10 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/sizeByType
 ### How to configure Hippocampe ?
 If you use Hippocampe in a docker, please check [this](#docker) first.
 
-The default configuration should be fine, but if you need to change it go to ```Hippocampe/core/conf```.
+The default configuration should be fine, but if you need to change it go to ```hippocampe/core/conf```.
 
 #### auth
-Some feeds are private and need authentification with login/password. Precise the top_level_url and your login/password in  ```Hippocampe/core/conf/auth/auth.conf```
+Some feeds are private and need authentification with login/password. Precise the top_level_url and your login/password in  ```hippocampe/core/conf/auth/auth.conf```
 
 ##### Example:
 ```
@@ -729,7 +729,7 @@ Refer to [How to add a new source ?](#how-to-add-a-new-source).
 
 #### hippo
 
-In  ```Hippocampe/core/conf/hippo/hippo.conf``` you can configure:
+In  ```hippocampe/core/conf/hippo/hippo.conf``` you can configure:
 
 + the flask API
     + and especially the port
@@ -771,28 +771,28 @@ threshold: 12
 Some information need to be known while using Hippocampe with docker.
 
 #### log location
-Hippocampe's logs are located at ```Hippocampe/packaging/volumeHippo/logs/hippocampe.log```.
+Hippocampe's logs are located at ```hippocampe/packaging/volumeHippo/logs/hippocampe.log```.
 
 #### elasticsearch files
 elasticsearch's files are located at:
 
-+ data: ```Hippocampe/packaging/volumeES/data```
-+ conf: ```Hippocampe/packaging/volumeES/conf```
-+ logs: ```Hippocampe/packaging/volumeES/logs```
++ data: ```hippocampe/packaging/volumeES/data```
++ conf: ```hippocampe/packaging/volumeES/conf```
++ logs: ```hippocampe/packaging/volumeES/logs```
 
 #### Configuration location
 
-Hippocampe configuration which is applied inside the docker is located at ```Hippocampe/packaging/volumeHippo/conf```. Have a look at [this](#how-to-configure-hippocampe) to fill in the conf.
+Hippocampe configuration which is applied inside the docker is located at ```hippocampe/packaging/volumeHippo/conf```. Have a look at [this](#how-to-configure-hippocampe) to fill in the conf.
 
 #### Changing port
 
-If you would like to change the port used by the API, **do not change it in the ```Hippocampe/packaging/volumeES/conf/hippo/hippo.conf``` file**.
+If you would like to change the port used by the API, **do not change it in the ```hippocampe/packaging/volumeES/conf/hippo/hippo.conf``` file**.
 
 Follow these steps instead to change from port 5000 to 5001, for example:
 
-+ In ```Hippocampe/core/Dockerfile``` look for ```EXPOSE 5000:5000``` and change it into ```EXPOSE 5001:5000```
-+ In ```Hippocampe/packaging/run.sh``` look for ```docker run -p 5000:5000 \``` and change it into ```docker run -p 5001:5000 \```
-+ Launch ```Hippocampe/packaging/build.sh```
-+ Launch ```Hippocampe/packaging/run.sh```
++ In ```hippocampe/core/Dockerfile``` look for ```EXPOSE 5000:5000``` and change it into ```EXPOSE 5001:5000```
++ In ```hippocampe/packaging/run.sh``` look for ```docker run -p 5000:5000 \``` and change it into ```docker run -p 5001:5000 \```
++ Launch ```hippocampe/packaging/build.sh```
++ Launch ```hippocampe/packaging/run.sh```
 
 Now Hippocampe is available on port 5001 and runs inside a docker.

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="images/Hippocampe-logo.png" width="400">
+<img src="images/hippocampe-logo.png" width="400">
 </p>
 
 **Hippocampe** is a threat feed aggregator. It gives your organisation a threat feed 'memory' and lets you query it easily through a REST API or from a Web UI. If you have a [Cortex](https://github.com/CERT-BDF/Cortex) server, there's already an analyzer to query Hippocampe. And if you use [TheHive](https://github.com/CERT-BDF/TheHive) as a security incident response platform, you can customize the JSON output produced by the analyzer to your taste or use the report template that we kindly provide.
@@ -26,7 +26,7 @@ Information, news and updates are regularly posted on [TheHive Project Twitter a
 We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.
 
 # Support
-Please [open an issue on GitHub](https://github.com/CERT-BDF/Hippocampe/issues/new) if you'd like to report a bug or request a feature.
+Please [open an issue on GitHub](https://github.com/CERT-BDF/hippocampe/issues/new) if you'd like to report a bug or request a feature.
 
 Alternatively, if you need to contact the project team, send an email to <support@thehive-project.org>.
 

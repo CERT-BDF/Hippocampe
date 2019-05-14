@@ -73,7 +73,7 @@ curl -i -H "Content-Type: application/json" -X POST -d '
 
 ## freshness
 *freshness* service checks if your feeds are "up to date".
-In ```Hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by default it is setted to 1 day:
+In ```hippocampe/core/conf/hippo/hippo.conf``` a threshold can be defined, by default it is setted to 1 day:
 ```
 [freshness]
 #in days
@@ -384,7 +384,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/new
 ## schedreport
 With [*hipposched*](#hipposched) service, indexation can be scheduled.
 If the indexation is scheduled every 12 hours, *schedReport* checks if an indexation has been launched in the last 12 hours. If so, it returns ```OK```, if not it returns ```NOK``` for every sources.
-The threshold is defined in ```Hippocampe/core/conf/hippo/hippo.conf```:
+The threshold is defined in ```hippocampe/core/conf/hippo/hippo.conf```:
 ```
 [schedReport]
 #in hours 
@@ -409,7 +409,7 @@ curl -GET http://localhost:5000/hippocampe/api/v1.0/schedReport
 
 ## shadowbook
 When launched, *shadowbook* service retrieves feeds from internet to index them. 
-Feeds to be requested are indicated under ```Hippocampe/core/conf/feeds```. 
+Feeds to be requested are indicated under ```hippocampe/core/conf/feeds```. 
 Check [this](how_to_add_feed.md) for more details on how to add feed.
 
 ### Example
