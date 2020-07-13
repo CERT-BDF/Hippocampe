@@ -5,6 +5,10 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import shadowbook
 import logging
+import os
+
+os.environ['TZ']= 'America/New_York'
+
 logger = logging.getLogger(__name__)
 def main(request):
 	logger.info('hipposched.main launched')
